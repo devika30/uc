@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./futureready.css";
 import xano from "../../images/xano.png";
 import Card from "../../components/common/Card";
 import { noCode, codePlatforms } from "./data";
 const FutureReady = () => {
+  const [activeTab, setActiveTab] = useState("nocode");
+  const handleTabClick = (tabId) => {
+    setActiveTab(tabId);
+  };
   return (
     <div className="future-ready">
       <div className="container">
@@ -18,16 +22,31 @@ const FutureReady = () => {
           </p>
 
           <div className="future-ready-grid-tab-container">
-            <a href="#" className="future-ready-grid-tab active">
+            <a
+              href="#nocode"
+              className={`future-ready-grid-tab ${
+                activeTab === "nocode" ? "active" : ""
+              }`}
+              onClick={() => handleTabClick("nocode")}
+            >
               <p>Build Faster</p>
               <h2>No Code Platform</h2>
             </a>
-            <a href="#" className="future-ready-grid-tab">
+            <a
+              href="#code"
+              className={`future-ready-grid-tab ${
+                activeTab === "code" ? "active" : ""
+              }`}
+              onClick={() => handleTabClick("code")}
+            >
               <p>Achieve Scale</p>
               <h2>Code Platforms</h2>
             </a>
           </div>
-          <div className="future-ready-grid future-ready-grid-nocode">
+          <div
+            className="future-ready-grid future-ready-grid-nocode"
+            id="nocode"
+          >
             <div className="future-ready-grid-lhs">
               <p>
                 Developing with no code platforms enables us to deliver
@@ -47,7 +66,7 @@ const FutureReady = () => {
             </div>
           </div>
 
-          <div className="future-ready-grid future-ready-grid-nocode">
+          <div className="future-ready-grid future-ready-grid-nocode" id="code">
             <div className="future-ready-grid-lhs">
               <p>
                 Code platforms help achieve scale easily. Code platforms
