@@ -2,7 +2,7 @@ import React from "react";
 import "./futureready.css";
 import xano from "../../images/xano.png";
 import Card from "../../components/common/Card";
-import { noCode , codePlatforms} from "./data";
+import { noCode, codePlatforms } from "./data";
 const FutureReady = () => {
   return (
     <div className="future-ready">
@@ -16,6 +16,17 @@ const FutureReady = () => {
             and a no-code API that transforms, filters and integrates with data
             anywhere
           </p>
+
+          <div className="future-ready-grid-tab-container">
+            <a href="#" className="future-ready-grid-tab active">
+              <p>Build Faster</p>
+              <h2>No Code Platform</h2>
+            </a>
+            <a href="#" className="future-ready-grid-tab">
+              <p>Achieve Scale</p>
+              <h2>Code Platforms</h2>
+            </a>
+          </div>
           <div className="future-ready-grid future-ready-grid-nocode">
             <div className="future-ready-grid-lhs">
               <p>
@@ -52,7 +63,11 @@ const FutureReady = () => {
             </div>
             <div className="future-ready-grid-rhs">
               {codePlatforms.map((data) => (
-                <Card title={data.title} content={data.content} children={data.children} />
+                <Card
+                  title={data.title}
+                  content={data.content}
+                  children={data.children}
+                />
               ))}
             </div>
           </div>
