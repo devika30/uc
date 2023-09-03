@@ -1,67 +1,72 @@
 .dropdown-container {
-    position: relative;
-    display: inline-block;
-  }
-  
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown {
+  display: flex;
+  position: absolute;
+  top: 150%;
+  left: 0;
+  overflow: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: none;
+  background-color: #000000f7;
+  border: 1px solid #ffffff33;
+}
+
+.dropdown.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.column {
+  color: #ffffff;
+  width: 250px;
+  padding: 15px 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.column:hover {
+  background-color: #ffffff1a;
+}
+
+.column .chevron {
+  display: none;
+}
+
+.column:hover .chevron {
+  display: block;
+}
+
+.column p {
+  font-size: 14px;
+  color: #ffffffcc;
+}
+.dropdown-link,
+.link {
+  font-size: 20px;
+  color: #303030;
+  text-decoration: none;
+  cursor: pointer;
+}
+.dropdown-link:hover,
+.link:hover {
+  color: #303030b3;
+}
+@media (max-width: 1100px) {
   .dropdown {
-    display: flex;
-    position: absolute;
-    top: 150%;
-    left: 0;
-    overflow: hidden;
-    transition: opacity 0.2s, visibility 0.2s;
-    opacity: 0;
-    visibility: hidden;
-    box-shadow: none;
-    background-color: #000000f7;
-    border: 1px solid #ffffff33;
-  }
-  
-  .dropdown.open {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .row {
-    display: flex;
-    align-items: center;
-  }
-  
-  .column {
-    color: #ffffff;
-    width: 250px;
-    padding: 15px 20px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    justify-content: space-between;
-  }
-  
-  .column:hover {
-    background-color: #ffffff1a;
-  }
-  
-  .column .chevron {
     display: none;
   }
-  
-  .column:hover .chevron {
-    display: block;
-  }
-  
-  .column p {
-    font-size: 14px;
-    color: #ffffffcc;
-  }
-  .dropdown-link,
-  .link {
-    font-size: 20px;
-    color: #303030;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .dropdown-link:hover,
-  .link:hover {
-    color: #303030b3;
-  }
+}

@@ -3,13 +3,10 @@ import PropTypes from "prop-types";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import "./linkwithdropdown.css";
 
-const LinkWithDropDown = ({ label, link, data, columns }) => {
+const LinkWithDropDown = ({ label, link, data, columns, onClick }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleDropdown = () => setIsOpen(!isOpen);
-
   const closeDropdown = () => setIsOpen(false);
-
   if (link) {
     return (
       <a className="link" href={link}>
@@ -23,7 +20,6 @@ const LinkWithDropDown = ({ label, link, data, columns }) => {
       const row = data.slice(i, i + columns);
       rows.push(row);
     }
-
     return (
       <div className="dropdown-container" onMouseLeave={closeDropdown}>
         <div className={`dropdown ${isOpen ? "open" : ""}`}>
@@ -42,13 +38,16 @@ const LinkWithDropDown = ({ label, link, data, columns }) => {
             ))}
           </div>
         </div>
-        <a className="dropdown-link" onMouseEnter={toggleDropdown}>
+        <a
+          className="dropdown-link"
+          onMouseEnter={toggleDropdown}
+          onClick={onClick}
+        >
           {label || "Hover me"}
         </a>
       </div>
     );
   }
-
   return null;
 };
 
