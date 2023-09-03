@@ -1,0 +1,31 @@
+.btn {
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    width: 150px;
+    padding: 15px 20px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .btn-primary {
+    color: #ffffff;
+    background-color: #101010;
+  }
+  
+  .btn-primary:hover {
+    background-color: #198ef6;
+  }
+  
+  .btn-white {
+    color: #101010;
+    background-color: #ffffff;
+    border: 1px solid #101010;
+  }
+  
+  .btn-white:hover {
+    color: #ffffff;
+    background-color: #198ef6;
+  }
