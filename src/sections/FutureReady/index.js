@@ -1,13 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./futureready.css";
 import xano from "../../images/xano.png";
 import Card from "../../components/common/Card";
 import { noCode, codePlatforms } from "./data";
+
 const FutureReady = () => {
   const [activeTab, setActiveTab] = useState("nocode");
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
+
+  const noCodeRef = useRef(null);
+  const codeRef = useRef(null);
+
+  const handleIntersection = (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        if (entry.target === noCodeRef.current) {
+          setActiveTab("nocode");
+        } else if (entry.target === codeRef.current) {
+          setActiveTab("code");
+        }
+      }
+    });
+  };
+
+  const options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.5,
+  };
+
+  const observer = new IntersectionObserver(handleIntersection, options);
+
+  useEffect(() => {
+    if (noCodeRef.current) {
+      observer.observe(noCodeRef.current);
+    }
+    if (codeRef.current) {
+      observer.observe(codeRef.current);
+    }
+    return () => {
+      if (noCodeRef.current) {
+        observer.unobserve(noCodeRef.current);
+      }
+      if (codeRef.current) {
+        observer.unobserve(codeRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="future-ready">
       <div className="container">
@@ -46,6 +88,7 @@ const FutureReady = () => {
           <div
             className="future-ready-grid future-ready-grid-nocode"
             id="nocode"
+            ref={noCodeRef}
           >
             <div className="future-ready-grid-lhs">
               <p>
@@ -66,7 +109,11 @@ const FutureReady = () => {
             </div>
           </div>
 
-          <div className="future-ready-grid future-ready-grid-nocode" id="code">
+          <div
+            className="future-ready-grid future-ready-grid-nocode"
+            id="code"
+            ref={codeRef}
+          >
             <div className="future-ready-grid-lhs">
               <p>
                 Code platforms help achieve scale easily. Code platforms
